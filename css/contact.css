@@ -43,18 +43,11 @@
     }
 
     @media (min-width: 768px) {
-      display: flex;
+      .container {
+        display: flex;
+        padding: 4rem 0 3rem 0;
+      }
     }
-
-    @media (min-width: 1400px) {
-      display: grid;
-      grid-template-columns: 3fr 1fr;
-      grid-template-areas:
-        "h3 headline"
-        "faq-still images";
-    }
-
-    @media (min-width: 768px) {
       .btn-contact {
         display: none;
         padding-left: 2rem;
@@ -76,11 +69,36 @@
       .contact-box:last-child {
         margin-right: 0;
       }
+      @media (min-width: 1400px) {
+        display: grid;
+        padding: 0rem;
+        grid-template-columns: auto;
+        grid-template-areas:
+          "h3 summary"
+          "faq-still summary"
+          "contact-box summary";
+      }
+      h3{
+        grid-area: h3;
+      }
+      .faq-still{
+        grid-area:faq-still;
+
+      }
+
+      .contact-box{
+        grid-area: contact-box;
+        width:200px;
+        grid-column: auto;
+      }
+       
+
+      }
+      summary{
+        grid-area: summary;
+
+
+      }
+
     }
   }
-  @media (min-width: 768px) {
-    .container {
-      padding: 4rem 0 3rem 0;
-    }
-  }
-}
