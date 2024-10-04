@@ -1,103 +1,163 @@
 #contact {
-  .container {
+  padding: 3rem;
+  padding-top: 4rem;
+  display: grid;
+  place-items: center;
+  /* Create grid template aread with two columns */
+  grid-template-areas:
+    "h3"
+    "faq-still"
+    "summary"
+    "contact-box"
+    "btn-contact";
+
+  .btn-contact {
+    background-color: var(--color-primary);
+    color: var(--color-wite);
+    padding: 0.8em 2em;
+    border: 0;
+    font-size: 1rem;
+    border-radius: 0.5em;
+    grid-area: btn-contact;
+  }
+  h3 {
+    grid-area: h3;
+    text-align: center;
+  }
+  .faq-still {
+    height: 100px;
+    text-align: center;
+    grid-area: faq-still;
+  }
+
+  .contact-box {
+    display: none;
+  }
+
+  .details-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: column;
-    padding: 3rem;
-    padding-top: 4rem;
-
-    @media (max-width: 768px) {
-      .btn-contact {
-        background-color: var(--color-primary);
-        color: var(--color-wite);
-        padding: 0.8em 2em;
-        border: 0;
-        font-size: 1rem;
-        border-radius: 0.5em;
-      }
-
-      .contact-box {
-        display: none;
-      }
+    border: 1px solid var(--color-border-gray);
+    border-radius: 10px;
+    grid-area: summary;
+  }
+  details {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--color-border-gray);
+    padding: 1rem;
+    &:last-child {
+      border-bottom: none;
     }
+  }
 
-    details[open] p {
-      padding-top: 1rem;
-    }
+  details summary {
+    cursor: pointer;
+    list-style: none; /* Remove default triangle */
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    font-weight: bold;
+  }
 
-    summary {
-      list-style: none;
-      cursor: pointer;
-    }
+  details[open] p {
+    padding-top: 1rem;
+  }
+  .summary-icon {
+    display: grid;
+    place-items: center;
+    border-radius: 100%;
+    /* display:block; */
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-border-gray);
+  }
 
-    summary::after {
-      content: "\25BC";
-      font-size: 14px;
-      transition: transform 0.3s ease;
-    }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+  }
 
-    details[open] summary::after {
-        content: "\25B2";
-      transform: rotate(180deg);
-    }
+  details[open] summary .summary-icon {
+    transform: rotate(180deg); /* Rotate or change the icon when open */
+    background-color: var(--color-primary);
+    color: white;
+  }
+  .btn-contact {
+    display: block;
+    padding: 1rem 2rem;
+    margin-top: 4rem;
+  }
 
-    @media (min-width: 768px) {
-      .container {
-        display: flex;
-        padding: 4rem 0 3rem 0;
-      }
+  @media (min-width: 768px) {
+    .btn-contact {
+      display: none;
     }
-      .btn-contact {
-        display: none;
-        padding-left: 2rem;
-        padding-bottom: 2rem;
-      }
+    .content-box-wrapper {
+      display: flex;
+      flex-direction: row;
+      column-gap: 2rem;
+      grid-area: contact-box;
+      margin-top: 2rem;
+      width: 100%;
+
       .contact-box {
         display: grid;
-        margin: 0 1.5rem 0 1.5rem;
         border: 1px solid var(--color-border-gray);
         padding: 2rem;
         border-radius: 8px;
         height: 150px;
-        width: 750px;
+        width: 100%;
         align-items: center;
-      }
-      #first-concact {
-        margin-left: 0 !important;
-      }
-      .contact-box:last-child {
-        margin-right: 0;
-      }
-      @media (min-width: 1400px) {
-        display: grid;
-        padding: 0rem;
-        grid-template-columns: auto;
-        grid-template-areas:
-          "h3 summary"
-          "faq-still summary"
-          "contact-box summary";
-      }
-      h3{
-        grid-area: h3;
-      }
-      .faq-still{
-        grid-area:faq-still;
-
-      }
-
-      .contact-box{
-        grid-area: contact-box;
-        width:200px;
-        grid-column: auto;
-      }
-       
-
-      }
-      summary{
-        grid-area: summary;
-
-
+        gap: 1rem;
+        &:last-child a {
+          color: green;
+        }
+        & span {
+          margin-left: 1rem;
+        }
       }
     }
+    .details-container {
+      width: 100%;
+      gap: 1rem;
+      border: none;
+    }
+
+    details {
+      border: none;
+      border: 1px solid #f4f3f3;
+      border-radius: 10px;
+      box-shadow: 2px 8px 12px 1px #eee;
+    }
   }
+  @media (min-width: 1400px) {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "h3 summary"
+      "faq-still summary"
+      "contact-box summary"
+      ". summary"
+      ". summary";
+    column-gap: 5rem;
+  }
+  .content-box-wrapper {
+    .contact-box {
+      padding: 1rem;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+  h3 {
+    text-align: start;
+  }
+  .faq-still {
+    text-align: start;
+  }
+}
